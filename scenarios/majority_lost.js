@@ -1,0 +1,14 @@
+const Node = require("../node");
+const Cluster = require("../cluster");
+const Simulator = require("../simulator");
+const Network = require("../network");
+const nodes = [new Node("A"), new Node("B"), new Node("C"), new Node("D"), new Node("E")];
+nodes[0].becomeLeader();
+nodes[2].fail(); nodes[3].fail(); nodes[4].fail();
+const cluster = new Cluster(nodes);
+const simulator = new Simulator(cluster, new Network());
+console.log("\nSCENARIO: MAJORITY LOST");
+console.log(`Majority needed: ${cluster.majority()}; online nodes: ${cluster.onlineNodes().length}`);
+console.log("Election possible:", cluster.hasMajority());
+simulator.replicate("instances=11");
+console.log("LESSON: Without a majority, the simulator refuses to commit new entries to protect consistency.");

@@ -1,0 +1,11 @@
+const Node = require("../node");
+const Cluster = require("../cluster");
+const Simulator = require("../simulator");
+const Network = require("../network");
+const nodes = [new Node("A"), new Node("B"), new Node("C")];
+const simulator = new Simulator(new Cluster(nodes), new Network());
+console.log("\nSCENARIO: HEARTBEATS");
+simulator.electLeader(nodes[0]);
+console.log("\nLeader sends empty AppendEntries heartbeats:");
+simulator.heartbeat();
+console.log("\nLESSON: Empty AppendEntries messages keep followers aware of the leader; if they stop, followers may start elections.");
