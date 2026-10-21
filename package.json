@@ -1,0 +1,22 @@
+{
+  "name": "raft-lab",
+  "version": "1.1.0",
+  "description": "Educational Raft consensus and hardening simulator for COMSM0122 Workshop 4",
+  "main": "simulator.js",
+  "scripts": {
+    "start": "node scenarios/leader_election.js",
+    "election": "node scenarios/leader_election.js",
+    "heartbeats": "node scenarios/heartbeats.js",
+    "leader-failure": "node scenarios/leader_failure.js",
+    "replication": "node scenarios/log_replication.js",
+    "follower-failure": "node scenarios/follower_failure.js",
+    "majority-lost": "node scenarios/majority_lost.js",
+    "partition": "node scenarios/network_partition.js",
+    "recovery": "node scenarios/log_recovery.js",
+    "hardening": "node scenarios/hardening.js",
+    "all": "node test/run-all.js"
+  },
+  "keywords": ["raft", "consensus", "distributed-systems", "fault-tolerance", "security", "workshop"],
+  "engines": { "node": ">=18" },
+  "license": "ISC"
+}
